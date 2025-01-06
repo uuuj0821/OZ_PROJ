@@ -155,22 +155,90 @@
 # print(mzfood)
 
 ######################################## 3-2. 2차원 리스트
-양파같은 = [[2, 0], [3, 1]]
-print(양파같은)
-print(양파같은[0])
-print(양파같은[0][0])
+# 양파같은 = [[2, 0], [3, 1]]
+# print(양파같은)
+# print(양파같은[0])
+# print(양파같은[0][0])
 
-# 3을 출력하기
-print(양파같은[1][0])
+# # 3을 출력하기
+# print(양파같은[1][0])
 
-# 추가
-양파같은.append([4, 1])
-print(양파같은)
+# # 추가
+# 양파같은.append([4, 1])
+# print(양파같은)
 
-양파같은.append(2)
-print(양파같은)
+# 양파같은.append(2)
+# print(양파같은)
 
-양파같은.append([3, 1])
-print(양파같은)
+# 양파같은.append([3, 1])
+# print(양파같은)
 
-print(양파같은[3])
+# print(양파같은[3])
+
+
+
+
+# x, y = map(float, input('실수를 입력하세요: ').split())
+# print(x, type(x))
+# print(y, type(y))
+
+
+
+######################################## 4. tuple
+
+# 튜플 = (1, 2, 3, "4")
+# print(튜플)
+
+# 튜플_리스트화 = list(튜플)
+# print(type(튜플_리스트화))
+
+# 리스트 = [1, 2, 3]
+# print(type(리스트))
+
+# 리스트_튜플화 = tuple(리스트)
+# print(type(리스트_튜플화))
+
+#번외
+
+# 수강생 = "중꺾그마"
+
+# 수강생_list = list(수강생)
+# 수강생_tuple = tuple(수강생)
+
+# print(수강생_list)
+# print(수강생_tuple)
+
+# 수강생_list[1] = "뿌"
+# print(수강생_list)
+
+# #join함수 공부 알고 있으면 코테에 좋아요
+# 취뽀_수강생 = "".join(수강생_list)
+# print(취뽀_수강생)
+
+# 취뽀_수강생 = "_".join(수강생_list)
+# print(취뽀_수강생)
+
+# 취뽀_수강생 = "&".join(수강생_tuple)
+# print(취뽀_수강생)
+
+
+
+######################################## 5. tuple
+
+# people = {"힘":50, "지능":40}
+
+# print(people["지능"])
+
+
+# ### 딕셔너리 형변환
+# student = ["유리", "철수", "맹구"]
+# print(type(student))
+
+# student_dict = dict(student)
+# print(student_dict)
+# print(type(student_dict))
+
+딕셔너리3 = dict(힘=30, 지능=20, 체력=40, 민첩=90)
+print(딕셔너리3)
+
+딕셔너리4 = dict("힘"=30, "지능"=20, "체력"=40, "민첩"=90)
