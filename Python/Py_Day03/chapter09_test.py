@@ -245,6 +245,11 @@
 
 
 
-x = [34, 22, 10, 3, 55, 66]
 
+sum = 1
+print(sum)
+
+del sum
+
+x = [1, 2, 3]
 print(sum(x))
