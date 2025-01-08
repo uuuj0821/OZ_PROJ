@@ -126,58 +126,9 @@
 #     num += 1
 #     print(f'현재값 : {inputNum}, 작업횟수 : {num}')
 
-    
-
-class business():
-    def __init__(self):
-        self.bungeoppang_type = ["팥붕어빵", "슈크림붕어빵", "초코붕어빵"]
-        self.bungeoppang_price = [1000, 1200, 1500]
-        self.stock_count = [10, 8, 5]
-        self.order_count = [0, 0, 0]
-        self.stock = dict(zip(self.bungeoppang_type, self.stock_count))
-        self.price = dict(zip(self.bungeoppang_type, self.bungeoppang_price))
-        self.order = dict(zip(self.bungeoppang_type, self.order_count))
-        # print(order)
-
-    def admin_stock(self, add_type, add_amount):  # 재고 추가         
-        self.stock.update({add_type : self.stock.get(add_type) + int(add_amount)})  # 재고 업데이트
-        print(f'현재재고 : {self.stock}')
-
-    def order_bungeoppang(self, order_type, order_amount):
-        if (self.stock.get(order_type) - int(order_amount)) < 0: # 재고가 부족할 경우, 손님에게 재고 부족을 알리고 재고를 감소시키지 않습니다.
-            print(f'{order_type}의 수량이 부족합니다. 주문할 수 있는 최고 수량은 {self.stock.get(order_type)} 개 입니다. 다시 주문 해 주세요.')
-        else: # 재고가 충분할 경우, 주문한 만큼 재고를 감소시키고 판매를 완료합니다.
-            self.stock.update({order_type : self.stock.get(order_type) - int(order_amount)})  # 손님의 주문 내용을 기반으로 재고를 업데이트합니다.
-            self.order.update({order_type : self.order.get(order_type) + int(order_amount)})
-            print(f'주문하신 붕어빵은 {order_type} 이고 주문수량은 {order_amount} 입니다. 감사합니다.') # 판매가 완료된 경우 판매된 붕어빵 맛과 개수를 출력하세요.
-        print(f'현재재고 : {self.stock}')
-        print(f'오늘의 주문 : {self.order}')
 
 
-###### 붕어빵 장사
-bungeoppang = business()
+nums = input("숫자를").split(",")
 
-while True:
-    ### 작업선택
-    work = input("작업을 선택 해주세요. (재고(1), 주문(2), 종료(3))")
-
-    if work == "종료" or work == "3":
-        sales = bungeoppang.order["팥붕어빵"] * 1000 + bungeoppang.order["슈크림붕어빵"] * 1200 + bungeoppang.order["초코붕어빵"] * 1500
-        print(f'오늘 장사 끝! 오늘의 판매수량은 {bungeoppang.order} 총 매출은 : {sales}원 입니다.')
-        break
-
-    if work == "재고" or work == "1":
-        print("관리자모드 - 재고관리입니다.")
-        add_type = input("[재고] 붕어빵의 종류를 입력해주세요. (종류(팥붕어빵, 슈크림붕어빵, 초코붕어빵)")
-        add_amount = input("붕어빵의 수량을 입력해주세요.")
-        bungeoppang.admin_stock(add_type, add_amount)
-    elif work == "주문" or work == "2":
-        print("주문이 들어왔습니다!")
-        order_type = input("[주문] 붕어빵의 종류를 입력해주세요. (종류 - 팥붕어빵, 슈크림붕어빵, 초코붕어빵)")
-        order_amount = input("붕어빵의 수량을 입력해주세요.")
-        bungeoppang.order_bungeoppang(order_type, order_amount)
-    else:
-        print("다시 입력해주세요!")
-        continue
-
-    
+print(type(nums))
+print(type(map(int, nums)))
