@@ -132,3 +132,4 @@ nums = input("숫자를").split(",")
 
 print(type(nums))
 print(type(map(int, nums)))
+
