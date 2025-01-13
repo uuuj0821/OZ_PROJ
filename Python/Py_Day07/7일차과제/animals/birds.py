@@ -1,8 +1,20 @@
-def eagles():
-    return "독수리"
+class Eagles():
+    def __init__(self):
+        pass
 
-def sparrows():
-    return "참새"
+    def cry(self):
+        return "끼악"
 
-def crow():
-    return "까마귀"
+class Sparrows():
+    def __init__(self):
+        pass
+
+    def cry(self):
+        return "짹쨱"
+    
+class Crow():
+    def __init__(self):
+        pass
+
+    def cry(self):
+        return "까악까악"
