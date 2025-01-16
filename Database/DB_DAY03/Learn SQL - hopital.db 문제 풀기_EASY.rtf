@@ -1,0 +1,62 @@
+{\rtf1\ansi\ansicpg949\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww37900\viewh18500\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 -- [easy]\
+-- 1\uc0\u48264 \
+-- SELECT first_name, last_name, gender FROM patients WHERE gender = 'M'\
+\
+-- 2\uc0\u48264 \
+-- SELECT first_name, last_name FROM patients WHERE allergies IS NULL\
+\
+-- 3\uc0\u48264  Show first name of patients that start with the letter 'C'\
+-- SELECT first_name FROM patients WHERE first_name LIKE 'C%'\
+\
+-- 4\uc0\u48264  Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)\
+-- SELECT first_name, last_name FROM patients WHERE weight BETWEEN 100 AND 120\
+\
+-- 5\uc0\u48264  Update the patients table for the allergies column. If the patient's allergies is null then replace it with 'NKA'\
+-- Update patients\
+-- SET allergies = 'NKA'\
+-- where allergies is NULL\
+\
+-- 6\uc0\u48264  Show first name and last name concatinated into one column to show their full name.\
+-- SELECT CONCAT(first_name, " ", last_name) AS full_name FROM patients\
+\
+-- 7\uc0\u48264  Show first name, last name, and the full province name of each patient.(Example: 'Ontario' instead of 'ON')\
+-- SELECT first_name, last_name, province_name\
+-- FROM patients \
+-- JOIN province_names ON patients.province_id = province_names.province_id\
+\
+-- 8\uc0\u48264  Show how many patients have a birth_date with 2010 as the birth year.\
+-- SELECT COUNT(birth_date) from patients where YEAR(birth_date) = 2010 \
+\
+-- 9\uc0\u48264  Show the first_name, last_name, and height of the patient with the greatest height.\
+-- SELECT first_name, last_name, MAX(height) FROM patients\
+\
+-- 10\uc0\u48264  Show all columns for patients who have one of the following patient_ids:1,45,534,879,1000\
+-- SELECT * FROM patients where patient_id in (1, 45, 534, 879, 1000)\
+\
+-- 11\uc0\u48264  Show the total number of admissions\
+-- select * FROM admissions\
+--SELECT count(patient_id) FROM admissions\
+\
+-- 12\uc0\u48264  Show all the columns from admissions where the patient was admitted and discharged on the same day.\
+-- SELECT * FROM admissions\
+-- SELECT * FROM admissions where admission_date = discharge_date\
+\
+-- 13\uc0\u48264  Show the patient id and the total number of admissions for patient_id 579.\
+-- SELECT patient_id, count(admission_date) AS total_admissions from admissions\
+-- WHERE patient_id = 579\
+\
+-- 14\uc0\u48264  Based on the cities that our patients live in, show unique cities that are in province_id 'NS'.\
+-- SELECT distinct city from patients where province_id = 'NS'\
+\
+-- 15\uc0\u48264  Write a query to find the first_name, last name and birth date of patients who has height greater than 160 and weight greater than 70\
+-- select first_name, last_name, birth_date from patients WHERE patients.height > 160 and patients.weight > 70\
+\
+-- 16\uc0\u48264  Write a query to find list of patients first_name, last_name, and allergies where allergies are not null and are from the city of 'Hamilton'\
+select first_name, last_name, allergies FROM patients where allergies is not NULL and patients.city = "Hamilton"}
