@@ -1,0 +1,35 @@
+{\rtf1\ansi\ansicpg949\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 -- SELECT * FROM products\
+\
+-- 1\uc0\u48264  Show the category_name and description from the categories table sorted by category_name.\
+-- SELECT category_name, description FROM categories order by category_name\
+\
+-- 2\uc0\u48264  Show all the contact_name, address, city of all customers which are not from 'Germany', 'Mexico', 'Spain'\
+-- select contact_name, address, city from customers where not country = 'Germany' and not country ='Mexico' and not country = 'Spain'\
+\
+-- 3\uc0\u48264  Show order_date, shipped_date, customer_id, Freight of all orders placed on 2018 Feb 26\
+-- select order_date, shipped_date, customer_id, freight from orders where order_date = "2018-02-26"\
+\
+-- 4\uc0\u48264  Show the employee_id, order_id, customer_id, required_date, shipped_date from all orders shipped later than the required date\
+-- select employee_id, order_id, customer_id, required_date, shipped_date FROM orders WHERE required_date < shipped_date\
+\
+-- 5\uc0\u48264  Show all the even numbered Order_id from the orders table\
+-- select order_id FROM orders where MOD(order_id, 2) = 0\
+\
+-- 6\uc0\u48264  Show the city, company_name, contact_name of all customers from cities which contains the letter 'L' in the city name, sorted by contact_name\
+-- SELECT city, company_name, contact_name FROM customers WHERE city like '%L%' order by contact_name\
+\
+-- 7\uc0\u48264  Show the company_name, contact_name, fax number of all customers that has a fax number. (not null)\
+-- SELECT company_name, contact_name, fax from customers WHERE fax is not null\
+\
+-- 8\uc0\u48264  Show the first_name, last_name. hire_date of the most recently hired employee.\
+-- SELECT first_name, last_name, hire_date FROM employees order by hire_date DESC LIMIT 1\
+\
+-- 9\uc0\u48264  Show the average unit price rounded to 2 decimal places, the total units in stock, total discontinued products from the products table.\
+SELECT round(AVG(unit_price), 2) AS average_price, sum(units_in_stock) as total_stock, sum(discontinued) as total_discontinued FROM products}
