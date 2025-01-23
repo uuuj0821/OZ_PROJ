@@ -150,7 +150,12 @@
 -- 배우 ID가 10인 배우의 정보를 삭제하시오.  // actor_id 키를 참조하고 있는 곳의 데이터를 먼저 삭제한 후 삭제해야한다. 아님 에러남!!
 -- 방법은 2가지? 1. 참조하는곳의 데이터를 먼저 삭제하기 2. 일시적으로 참조키 체크 해제 하기 (0 -> 1 로 값을 제때 변경해줘야함 // 왜냐 데이터를 임시로 손을 대는거니까)
 -- DELETE FROM film_actor WHERE actor_id = 10
-DELETE FROM actor WHERE actor_id = 10
+-- DELETE FROM actor WHERE actor_id = 10
+
+-- SET foreign_key_checks = 0;
+-- DELETE FROM actor WHERE actor_id = 11;
+-- SET foreign_key_checks = 1;
+DELETE FROM film_actor WHERE actor_id = 11
 
 
 
