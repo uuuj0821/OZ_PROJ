@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>설문조사 양식</title>
+</head>
+<body>
+    <header>
+        <h1>설문조사 양식</h1>
+        <p>모든 항목에 빠짐없이 체크해주십시오.</p>
+    </header>
+    <hr>
+
+    <main>
+        <form>
+            <fieldset>
+                <legend>개인정보</legend>
+                <label for="name">이름</label>
+                <input type="text" name="name" id="name" placeholder="본명을 입력하세요">
+                <br>
+                <br>
+                <label for="email">이메일</label>
+                <input type="email" name="email" id="email" placeholder="메일 주소를 쓰세요">
+            </fieldset>
+            <fieldset>
+                <legend>설문</legend>
+                <p>1. 우리학원을 어떻게 알고 오셨나요?</p>
+                <input type="radio" id="ad" name="know">
+                <label for="ad">광고</label>
+                <input type="radio" id="paper" name="know">
+                <label for="paper">전단지</label>
+                <input type="radio" id="friends" name="know">
+                <label for="friends">지인소개</label>
+                <input type="radio" id="blog" name="know">
+                <label for="blog">블로그</label>
+
+                <p>2. 연령대가 어떻게 되십니까?</p>
+                <input type="radio" id="teen" name="age">
+                <label for="teen">10대</label>
+                <input type="radio" id="twenty" name="age">
+                <label for="twenty">20대</label>
+                <input type="radio" id="thity" name="age">
+                <label for="thity">30대</label>
+                <input type="radio" id="fourty" name="age">
+                <label for="fourty">40대</label>
+                <input type="radio" id="fifty" name="age">
+                <label for="fifty">50대</label>
+                <input type="radio" id="other" name="age">
+                <label for="other">그 외</label>
+
+                <p>3. 학원을 선택할 때 가장 중요하게 생각하는 것은 무엇입니까? 모두 고르세요.</p>
+                <input type="checkbox" id="position" name="academy">
+                <label for="position">위치</label>
+                <input type="checkbox" id="price" name="academy">
+                <label for="price">학원비</label>
+                <input type="checkbox" id="teacher" name="academy">
+                <label for="teacher">강사</label>
+                <input type="checkbox" id="infra" name="academy">
+                <label for="infra">시설</label>
+
+                <p>4. 학습이 필요한 과목을 선택해주세요. 중복 선택이 가능합니다. </p>
+                <input type="checkbox" id="korean" name="subject">
+                <label for="korean">국어</label>
+                <input type="checkbox" id="math" name="subject">
+                <label for="math">수학</label>
+                <input type="checkbox" id="science" name="subject">
+                <label for="science">과학</label>
+                <input type="checkbox" id="history" name="subject">
+                <label for="history">역사</label>
+                <input type="checkbox" id="english" name="subject">
+                <label for="english">영어</label>
+
+                <p>5. 최종 학력을 선택해주세요.</p>
+                <select>
+                    <option value="elemetary">초등학교</option>
+                    <option value="middle">중학교</option>
+                    <option value="high">고등학교</option>
+                    <option value="univ">대학교</option>
+                    <option value="graduate">대학원</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>기타 의견</legend>
+                <textarea rows="3" cols="30" name="comment"></textarea>
+            </fieldset>
+            <br>
+            <input type="submit">
+        </form>
+    </main>
+    <hr>
+
+    <footer>
+        <p>입력하느라 수고하셨습니다.</p>    
+    </footer>
+</body>
+</html>
