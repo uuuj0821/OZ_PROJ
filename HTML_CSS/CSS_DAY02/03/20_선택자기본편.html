@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 기본편</title>
+
+    <!--속성이 겹칠 경우 순서 상 마지막에 작성된 스타일이 적용된다.-->
+    <style>
+        *{
+            color:red;
+        }
+
+        h2{
+            color:purple;
+        }
+
+        li{
+            color:blue;
+        }
+
+        #poppin{
+            color:aqua;
+        }
+
+        /* . 은 class*/
+        .hiphop{
+            color:green;
+        }
+
+        /* 위의 코드와 같음. 좀 더 명시적 */
+        li.hiphop{
+            color:green;
+        }
+
+        /* #은 id */
+        #belly{
+            color:pink;
+        }
+
+        /* 위의 코드와 같음. 좀 더 명시적 */
+        li#belly{
+            color:pink;
+        }
+
+        /* 그룹 선택자 */
+        h2, p, li{
+            color:yellow;
+        }
+
+        /*
+        단, 쓰여진 순서와 상관없이 선택자 우선순위가 존재한다.
+        1. 아이디 선택자
+        2. 클래스 선택자
+        3. 태그 선택자
+        */
+
+    </style>
+</head>
+<body>
+    <h2>춤의 장르</h2>
+    <p>무척 다양한 장르가 존재합니다</p>
+    <ul>
+        <li class="hiphop">비보잉</li>
+        <li class="hiphop" id="poppin">팝핀</li>
+        <li class="hiphop">락킹</li>
+        <li id="belly">벨리</li>
+        <li id="jazz">재즈</li>
+    </ul>
+</body>
+</html>

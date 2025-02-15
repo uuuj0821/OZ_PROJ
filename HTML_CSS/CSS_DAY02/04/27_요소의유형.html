@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소의 유형</title>
+    <style>
+        p{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+
+            /*
+            block 요소일때는 width, height가 먹는데
+            inline 요소일때는 width, height가 적용이 안된다. (실습해보삼)
+            그래서 형태는 inline이면서 block 요소의 특징을 갖는 것이
+            "inline-block"이다. inline-block 으로 설정하면
+            inline 요소일때는 적용이 되지 않았던 width, height가 적용이 된다.
+
+            none의 경우 디스플레이를 안 해준다.
+            a, b를 none 하고 c의 요소를 none 하지 않을 경우,
+            c가 a,b 영역 아래에 생성되는 것이 아니라 실제 a,b가 없는 것처럼
+            제일 상단에 c가 디스플레이된다.
+            */
+        }
+
+        span{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <p>경제</p>
+    <p>정치</p>
+    <p>과학</p>
+    <p>생활</p>
+    <span>하하</span>
+</body>
+</html>

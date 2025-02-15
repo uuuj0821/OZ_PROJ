@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--내부 스타일 // head에 쓰는게 일반적-->
+    <style>
+        p{
+            color:orange;
+            opacity: 0.5;
+        }
+    </style>
+    <!--외부 스타일-->
+    <!-- 인라인 스타일이 아닌 경우, 순서 상 나중에 쓰여진 선언문이 적용된다.
+        외부 스타일 하단에 내부 스타일 작성하면 내부 스타일이 작성 됨 -->
+    <link href="19_CSS문서사용하기.css" rel="stylesheet">
+</head>
+<body>
+    <!--인라인 스타일 // 내부작성과 인라인 스타일이 있을 경우 인라인 스타일이 우선적용됨-->
+    <p style="color:red; opacity: 0.1;">스타일 적용 실험: 색깔만 바꿔보자</p>
+    <p>스타일 적용 실험: 색깔만 바꿔보자</p>
+    <p>스타일 적용 실험: 색깔만 바꿔보자</p>
+</body>
+</html>

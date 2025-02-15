@@ -1,33 +1,33 @@
-from itertools import combinations
+# from itertools import combinations
 
-def solution(numbers):
-    count = 0
-    trios = list(combinations(numbers, 3))
+# def solution(numbers):
+#     count = 0
+#     trios = list(combinations(numbers, 3))
 
-    for trio in trios:
-        if sum(trio) == 0:
-            count += 1
+#     for trio in trios:
+#         if sum(trio) == 0:
+#             count += 1
 
-    return count
+#     return count
     
-    # count = 0
+#     # count = 0
 
-    # for i in numbers[:]:
-    #     # print(numbers[:])
-    #     for j in numbers[1:]:
-    #         # print(numbers[1:])
-    #         for k in numbers[2:]:                
-    #             # print(numbers[2:])
-    #             if i + j + k == 0:
-    #                 print(i, j, k)
-    #                 count += 1 
+#     # for i in numbers[:]:
+#     #     # print(numbers[:])
+#     #     for j in numbers[1:]:
+#     #         # print(numbers[1:])
+#     #         for k in numbers[2:]:                
+#     #             # print(numbers[2:])
+#     #             if i + j + k == 0:
+#     #                 print(i, j, k)
+#     #                 count += 1 
 
-    # return count
+#     # return count
 
 
-print(solution([-1, 1, -1, 1]))
-print(solution([-2, 3, 0, 2, -5]))
-print(solution([-3, -2, -1, 0, 1, 2, 3]))
+# print(solution([-1, 1, -1, 1]))
+# print(solution([-2, 3, 0, 2, -5]))
+# print(solution([-3, -2, -1, 0, 1, 2, 3]))
 
 '''
 1. 학생마다 같은 값을 가질 순 있다.

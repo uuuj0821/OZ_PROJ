@@ -1,0 +1,37 @@
+*{
+    text-align: center;
+}
+
+html{
+    background-color: #00ff0050;
+    font-size: 16px;
+}
+
+body{
+    width: 640px;
+    margin: auto; /* 너비에서 남은 여백을 동일하게 분배한다. */
+}
+
+h1{
+    font-size: 48px;
+}
+
+img{
+    width: 200px;
+    border-radius: 100px;
+}
+
+p{
+    font-size: 1.2rem;
+}
+
+#intro{
+    font-family: "Nanum Brush Script", serif;
+    color: #ff00ff;
+}
+
+#grow{
+    font-family: "Jua", serif;
+    color: #3a9afd;
+    text-align: right;
+}

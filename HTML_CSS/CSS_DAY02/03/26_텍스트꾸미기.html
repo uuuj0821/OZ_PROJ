@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 꾸미기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* 폰트 여러개 지정 : 폰트의 우선순위를 지정해주는 것
+        만약 내가 사용하는 pc가 arial폰트를 지원하지 않으면
+        그 다음에 작성한 monospace 폰트가 지정된다. */
+        *{
+            font-family: "Nanum Brush Script", serif;
+        }
+
+        html{
+            font-size: 8px;
+        }
+
+        body{
+            font-size:32px;
+        }
+
+        #first{
+            /* 
+            em : 부모태그의 값에 비율을 곱한다.
+            아래의 예시는 부모태그인 body의 32px * 0.5 하는 것
+            */
+
+            /*
+            rem : root 요소의 값에 비율을 곱한다.
+            html에 값을 곱함
+            */
+            font-size: 0.5em;
+            font-size: 3rem;
+            font-weight: 100; /* 글자 두께 // 글꼴마다 값의 차이는 있음*/
+            line-height: 50px; /* 행 높이 */
+            text-align: center; /* 정렬 // left, right, center, justify(양쪽정렬)*/
+        }
+    </style>
+</head>
+<body>
+    <p id="first">에스프레소와 물을 섞으면 아메리카노가 됩니다.</p>
+    <p>에스프레소와 물을 섞으면 아메리카노가 됩니다.</p>
+</body>
+</html>

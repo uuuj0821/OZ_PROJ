@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스 모델이란</title>
+    <style>
+        .area{
+            width: 200px;
+            height: 100px;
+        }
+
+        .red{
+            border-width: 3px;
+            border-style: solid;
+            border-color: red;
+            border-radius: 10px 20px 30px 40px;
+            /*
+            값은 좌측 상단에서부터 시작해서 시계방향으로 적용된다
+            */
+        }
+
+        .green{
+            /*
+            단축속성은 공백으로 속성값을 서로 구분
+            */
+            border:3px solid green;
+            border-radius: 20px;
+            /*
+            radius에 값 하나만 넣으면 4개 꼭지점에 전부 적용된다.
+            */
+        }
+    </style>
+</head>
+<body>
+    <h2>현진영 - 흐린 기억 속의 그대</h2>
+    <p class="red">안개빛 조명은 흐트러진 내 몸을 감싸고</p>
+    <p class="area green">술에 취해 비틀거리는 나의 모습 이제는 싫어
+</body>
+</html>
