@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 & 이벤트 핸들링</title>
+</head>
+<body>
+    <button id="span">SPAN</button>
+    <button id="strong">STRONG</button>
+    <button id="mark">MARK</button>
+
+    <hr>
+
+    <script>
+        const spanBtn = document.getElementById("span")
+        const strongBtn = document.getElementById("strong")
+        const markBtn = document.getElementById("mark")
+
+        function handleClick(event){
+            if(event.target.id == "span"){
+                const span = document.createElement("span")
+                span.textContent = "span 태그"
+                document.body.append(span)
+            }
+            else if(event.target.id == "strong"){
+                const strong = document.createElement("strong")
+                strong.textContent = "strong 태그"
+                document.body.append(strong) 
+            }
+            else{
+                const mark = document.createElement("mark")                
+                mark.textContent = "mark 태그"
+                document.body.append(mark)
+            }
+        }
+
+        // 함수에 괄호 붙이면, 코드 실행 시 함수가 바로 실행됨.
+        // 우리는 변수에 담아두고 쓰기 위해 괄호를 붙이지 않음.
+        //spanBtn.onclick = handleClick
+
+        // 전달인자에 함수를 통째로 넣어도 됨
+        // spanBtn.addEventListener("click", function handleClick() {
+        //     const span = document.createElement("span")
+        //     span.textContent = "새로 생긴 span 태그 입니다."
+        //     document.body.append(span)
+        // })
+
+        spanBtn.addEventListener("click", handleClick)
+        strongBtn.addEventListener("click", handleClick)
+        markBtn.addEventListener("click", handleClick)
+    </script>
+</body>
+</html>
