@@ -35,7 +35,7 @@
         <button type="button" class="btn btn-primary" onclick="filterProducts()">조회</button>
       </div>
     </form>
-
+<!--
     <div class="mt-3">
       <label for="genderSelect">성별 선택:</label>
       <select class="form-select w-auto d-inline-block" id="genderSelect">
@@ -44,6 +44,7 @@
         <option value="female">여성</option>
       </select>
     </div>
+    -->
 
     <div class="mt-3">
       <button class="btn btn-success" onclick="toggleSignUpForm()">회원가입</button>
@@ -77,8 +78,12 @@
           <tr>
             <th>성별</th>
             <td>
-              <label><input type="radio" name="gender" value="male" checked>남자</label>
-              <label><input type="radio" name="gender" value="female">여자</label>
+              <select id="gender" name="gender">
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+              </select>
+              <!-- <label><input type="radio" name="gender" value="male" checked>남자</label>
+              <label><input type="radio" name="gender" value="female">여자</label> -->
             </td>
           </tr>
           <tr>
