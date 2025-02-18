@@ -1,0 +1,19 @@
+#btn_submit {
+    background-color: #aa3402;
+    color: #ffffff;
+  }
+
+body.dark-mode {
+background-color: #121212;
+color: white;
+}
+
+.dark-mode .table {
+color: white;
+}
+
+.dark-mode .form-control, .dark-mode .form-select {
+background-color: #333;
+color: white;
+border: 1px solid #777;
+}

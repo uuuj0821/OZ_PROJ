@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 성공!</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;   
+            justify-content: center; 
+            align-items: center;  
+            height: 100vh;       
+            margin: 0;     
+        }
+
+        #gohome{
+            width: 100px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            background-color: #aab833;
+            color: #ffffff;
+        }
+
+        h1{
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>회원가입 성공!</h1>
+    <button name="btn_gohome" id="gohome" onclick="goToPage()">홈으로 이동</button>
+
+    <script>
+        function goToPage() {
+            window.location.href = "kream_project.html";
+        }
+    </script>
+</body>
+</html>
