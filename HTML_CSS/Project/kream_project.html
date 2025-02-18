@@ -88,17 +88,6 @@
             <td><input name="phone" placeholder="휴대전화 번호"></td>
           </tr>
           <tr>
-            <th>원하는 직무</th>
-            <td>
-              <select name="position">
-                <option value="developer">개발자</option>
-                <option value="designer">웹디자이너</option>
-                <option value="manager">기획자</option>
-                <option value="undetermined" selected>미정</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
             <th>성별</th>
             <td>
               <label><input type="radio" name="gender" value="male" checked>남자</label>
@@ -109,14 +98,9 @@
             <th>이메일</th>
             <td><input title="정확한 메일 주소를 작성해주세요" type="email" name="email"></td>
           </tr>
-          <tr>
-            <th>자기소개</th>
-            <td><textarea name="intro"></textarea></td>
-          </tr>
         </table>
         <div class="buttons">
-          <input type="submit" value="가입" class="btn" title="가입">
-          <input type="reset" value="리셋" class="btn" title="처음으로">
+          <input type="submit" id="btn_submit" value="가입" class="btn" title="가입">
         </div>
       </form>
     </div>
@@ -189,8 +173,8 @@
 
     ];
 
-    const product_data_Table = document.getElementById('product_data_Table');
-    const itemsPerPage = 2;
+const product_data_Table = document.getElementById('product_data_Table');
+    const itemsPerPage = 4; // 한 페이지당 보여줄 아이템 수
     let currentPage = 1;
 
     function renderTable(data, page = 1) {
@@ -217,8 +201,9 @@
 
       for (let i = 1; i <= totalPages; i++) {
         const li = document.createElement("li");
-        li.classList.add("page-item", i === currentPage ? "active" : "");
-
+        li.classList.add("page-item");
+        if (i === currentPage) li.classList.add("active");
+        
         const a = document.createElement("a");
         a.classList.add("page-link");
         a.href = "#";
@@ -233,9 +218,28 @@
       }
     }
 
+    function filterProducts() {
+      const category = document.getElementById("inlineFormSelectPref").value;
+      const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+
+      const filteredData = product_data.filter(item =>
+        (category === "" || item.category === category) &&
+        (searchQuery === "" || item.product.toLowerCase().includes(searchQuery))
+      );
+
+      currentPage = 1;
+      renderTable(filteredData, currentPage);
+    }
+
+    // 회원가입 폼 제출 버튼에 이벤트 리스너 추가
+  document.getElementById('btn_submit').addEventListener('click', function(event) {
+    event.preventDefault(); // 폼 제출을 막습니다.
+    alert("가입이 완료되었습니다."); // 가입 완료 메시지
+  });
+
     renderTable(product_data);
   </script>
-
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
