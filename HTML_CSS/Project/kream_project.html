@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Admin Page</title>
+  <style>
+    body.dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+    .dark-mode .table {
+      color: white;
+    }
+    .dark-mode .form-control, .dark-mode .form-select {
+      background-color: #333;
+      color: white;
+      border: 1px solid #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <h3 class="mt-3 mb-3">신규 등록 상품</h3>
+      <div>
+        <span id="currentDateTime"></span> <!-- 현재 날짜 및 시간 표시 -->
+        <button class="btn btn-secondary ms-3" onclick="toggleDarkMode()">🌙 다크모드</button>
+      </div>
+    </div>
+
+    <form class="row row-cols-lg-auto g-3 align-items-center">
+      <div class="col-12">
+        <label class="visually-hidden" for="inlineFormSelectPref">카테고리</label>
+        <select class="form-select" id="inlineFormSelectPref" name="category_data_table">
+          <option value="">전체</option>
+          <option value="상의">상의</option>
+          <option value="하의">하의</option>
+          <option value="신발">신발</option>
+          <option value="패션잡화">패션잡화</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <input type="text" class="form-control" id="searchInput" placeholder="상품명을 입력하세요">
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary" onclick="filterProducts()">조회</button>
+      </div>
+    </form>
+
+    <div class="mt-3">
+      <label for="genderSelect">성별 선택:</label>
+      <select class="form-select w-auto d-inline-block" id="genderSelect">
+        <option value="all">전체</option>
+        <option value="male">남성</option>
+        <option value="female">여성</option>
+      </select>
+    </div>
+
+    <div class="mt-3">
+      <button class="btn btn-success" onclick="toggleSignUpForm()">회원가입</button>
+    </div>
+
+    <!-- 회원가입 폼 -->
+    <div id="signUpForm" class="mt-3 p-3 border rounded" style="display: none;">
+      <h4>회원가입</h4>
+      <form id="joinForm">
+        <table class="table">
+          <tr>
+            <th>아이디</th>
+            <td><input name="id" placeholder="아이디"></td>
+          </tr>
+          <tr>
+            <th>비밀번호</th>
+            <td><input type="password" name="pw1" placeholder="비밀번호"></td>
+          </tr>
+          <tr>
+            <th>비밀번호 확인</th>
+            <td><input type="password" name="pw2" placeholder="비밀번호 확인"></td>
+          </tr>
+          <tr>
+            <th>이름</th>
+            <td><input name="name" placeholder="사용자 이름"></td>
+          </tr>
+          <tr>
+            <th>전화번호</th>
+            <td><input name="phone" placeholder="휴대전화 번호"></td>
+          </tr>
+          <tr>
+            <th>원하는 직무</th>
+            <td>
+              <select name="position">
+                <option value="developer">개발자</option>
+                <option value="designer">웹디자이너</option>
+                <option value="manager">기획자</option>
+                <option value="undetermined" selected>미정</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>성별</th>
+            <td>
+              <label><input type="radio" name="gender" value="male" checked>남자</label>
+              <label><input type="radio" name="gender" value="female">여자</label>
+            </td>
+          </tr>
+          <tr>
+            <th>이메일</th>
+            <td><input title="정확한 메일 주소를 작성해주세요" type="email" name="email"></td>
+          </tr>
+          <tr>
+            <th>자기소개</th>
+            <td><textarea name="intro"></textarea></td>
+          </tr>
+        </table>
+        <div class="buttons">
+          <input type="submit" value="가입" class="btn" title="가입">
+          <input type="reset" value="리셋" class="btn" title="처음으로">
+        </div>
+      </form>
+    </div>
+
+    <div class="container mt-3">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>카테고리</th>
+            <th>브랜드</th>
+            <th>상품명</th>
+            <th>가격</th>
+          </tr>
+        </thead>
+        <tbody id="product_data_Table"></tbody>
+      </table>
+
+      <!-- 페이지네이션 -->
+      <nav>
+        <ul class="pagination justify-content-center" id="pagination"></ul>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    // 현재 날짜 및 시간 업데이트
+    function updateDateTime() {
+      const now = new Date();
+      document.getElementById("currentDateTime").innerText = now.toLocaleString();
+    }
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+    // 다크 모드 기능
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const isDarkMode = document.body.classList.contains("dark-mode");
+      localStorage.setItem("darkMode", isDarkMode);
+    }
+
+    // 페이지 로드 시 다크 모드 설정 확인
+    if (localStorage.getItem("darkMode") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+
+    // 회원가입 폼 토글
+    function toggleSignUpForm() {
+      const form = document.getElementById("signUpForm");
+      form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
+    }
+
+    // 제품 데이터
+    const product_data = [
+    { category: "상의", brand: 'Supreme', product: '슈프림 박스로고 후드티1', price: '1390,000' },
+      { category: "상의", brand: 'Supreme', product: '슈프림 박스로고 후드티2', price: '2390,000' },
+      { category: "상의", brand: 'Supreme', product: '슈프림 박스로고 후드티3', price: '3390,000' },
+
+      { category: "하의", brand: 'DIESEL', product: '디젤 트랙 팬츠1', price: '1,188,000' },
+      { category: "하의", brand: 'DIESEL', product: '디젤 트랙 팬츠2', price: '2,188,000' },
+      { category: "하의", brand: 'DIESEL', product: '디젤 트랙 팬츠3', price: '3,188,000' },
+
+      { category: "신발", brand: 'Nike', product: '에어포스 11', price: '337,000' },
+      { category: "신발", brand: 'Nike', product: '에어포스 12', price: '437,000' },
+      { category: "신발", brand: 'Nike', product: '에어포스 13', price: '537,000' },
+
+      { category: "패션잡화", brand: 'Music&Goods', product: '빵빵이1 키링', price: '229,000' },
+      { category: "패션잡화", brand: 'Music&Goods', product: '빵빵이2 키링', price: '329,000' },
+      { category: "패션잡화", brand: 'Music&Goods', product: '빵빵이3 키링', price: '429,000' },
+      { category: "패션잡화", brand: 'Music&Goods', product: '빵빵이4 키링', price: '529,000' },
+
+    ];
+
+    const product_data_Table = document.getElementById('product_data_Table');
+    const itemsPerPage = 2;
+    let currentPage = 1;
+
+    function renderTable(data, page = 1) {
+      product_data_Table.innerHTML = "";
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const paginatedData = data.slice(start, end);
+
+      paginatedData.forEach((item) => {
+        const row = product_data_Table.insertRow();
+        row.insertCell(0).innerHTML = item.category;
+        row.insertCell(1).innerHTML = item.brand;
+        row.insertCell(2).innerHTML = item.product;
+        row.insertCell(3).innerHTML = item.price;
+      });
+
+      renderPagination(data.length);
+    }
+
+    function renderPagination(totalItems) {
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement("li");
+        li.classList.add("page-item", i === currentPage ? "active" : "");
+
+        const a = document.createElement("a");
+        a.classList.add("page-link");
+        a.href = "#";
+        a.innerText = i;
+        a.onclick = function () {
+          currentPage = i;
+          renderTable(product_data, currentPage);
+        };
+
+        li.appendChild(a);
+        pagination.appendChild(li);
+      }
+    }
+
+    renderTable(product_data);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
