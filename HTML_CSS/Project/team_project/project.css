@@ -1,0 +1,164 @@
+/* 다크모드 및 기타 스타일 */
+body.dark-mode {
+    background-color: #252525;
+    color: #ffffff;
+}
+
+.dark-mode .table,
+.dark-mode .table th,
+.dark-mode .table td {
+    background-color: #252525;
+    color: #ffffff;
+    border-color: #444444;
+}
+
+.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2a2a2a;
+}
+
+.dark-mode .table-hover tbody tr:hover {
+    background-color: #333333;
+}
+
+.dark-mode .form-select,
+.dark-mode .form-control {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-color: #444444;
+}
+
+.dark-mode .form-control::placeholder {
+    color: #ffffff;
+}
+
+.dark-mode .pagination {
+    background-color: #252525;
+    color: #ffffff;
+}
+
+.dark-mode .page-link {
+    color: #ffffff;
+    background-color: #1e1e1e;
+    border-color: #444444;
+}
+
+.dark-mode .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.dark-mode .page-item.disabled .page-link {
+    color: #6c757d;
+}
+
+.dark-mode h3 {
+    color: #ffffff;
+}
+
+.btn-dark-mode {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 관리자 페이지는 기본 숨김 처리 */
+#adminSection {
+    display: none;
+}
+
+/* 로그인 섹션 스타일 */
+#loginSection {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #74ABE2, #5563DE);
+}
+
+#loginSection .card {
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+#loginSection .card-title {
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+/*위로 가기 버튼 구현*/
+#topButton {
+    display: none;
+    /* 기본적으로 숨김 */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: url('top_icon.png') no-repeat center;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    /* 배경을 투명하게 설정 */
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+  position: absolute;
+  left: -9999px;
+}
+.checkbox:checked + label,
+.checkbox:not(:checked) + label{
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #ffeba7;
+}
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before{
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #ffeba7;
+  background-color: #102770;
+  font-family: 'unicons';
+  content: '';
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  transition: all 0.5s ease;
+}
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+}
+
+#loginSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 화면 중앙에 배치 */
+}
+
+.checkbox, label {
+    display: block; /* checkbox와 label을 세로로 배치 */
+    margin-bottom: 20px; /* checkbox와 카드 간 간격 설정 */
+}
+
+.card {
+    width: 100%;
+    max-width: 440px; /* 카드의 최대 너비 설정 */
+    margin-top: 20px; /* 카드와 checkbox 간의 간격 */
+}
