@@ -38,3 +38,8 @@ for num, i in enumerate(results, 1):
     print("")
 
 driver.quit()
+
+'''
+정적스크래핑 : 스크롤이 되지 않는 상태에서 스크래핑
+동적스크래핑 : 스크롤을 최하단으로 내려서 모든 글을 스크래핑
+'''

@@ -13,7 +13,7 @@ html = req.text
 if req.status_code != 200:
     print("[Error] 페이지를 불러오는 데 실패했습니다.")
 else:
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "html.parser") 
     lsts = soup.select("[class^=lst]")
 
     for rank, name in enumerate(lsts, 1):
