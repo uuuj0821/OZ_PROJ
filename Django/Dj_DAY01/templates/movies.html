@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for movie in movie_list %}
+        {% if forloop.counter <= 3 %}
+            {{ forloop.counter }}위 : <a href="/movie/{{ forloop.counter0 }} ">{{ movie.title }}</a><br>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
+
+{# forloop.count는 1부터 시작, forloop.count0은 0부터 시작#}
+{# 0, 1 외 다른 숫자로 시작하고 싶을 때 +, - 로 연산 되지 않음#}
+{# forloop.count | add:숫자(음수,양수 가능) sub, minus 함수는 없음, add로 음수 값 넣으면 그게 마이너스임#}
+{# 예시) forloop.count | add:5 // forloop.count | add:-2#}

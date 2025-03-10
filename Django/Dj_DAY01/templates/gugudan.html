@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ num }} 단</h1>
+    {% for result in results %}
+        <p>{{ num }} x {{ forloop.counter }} = {{ result }}
+    {% endfor %}
+</body>
+</html>
+
+{# django templates에서는 * 를 바로 사용할 수 없다.#}
+{# 그래서 widthratio 함수를 사용하는데 원래 가로 세로 비율을 곱하는 함수 임 #}
+{# widthratio a b * c => a / b * c 이다. #}
+{# 그래서 widthratio num 1 * i 이런식으로 하면 곱할 수 있다. (num / 1 = num 이니까 #}
+{# 단 위의 방법은 추천 하지 않음, usrls에서 계산 후 받는 방법을 추천#}
