@@ -74,7 +74,7 @@ def movies(request):
     #
     # return HttpResponse(response_text)
 
-    ## views 대신 templates 사용하는 방법
+    ## views 없이 templates 사용하는 방법
     return render(request, 'movies.html', {'movie_list':movie_list})
 
 def movie_detail(request, index):
