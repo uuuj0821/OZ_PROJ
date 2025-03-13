@@ -6,12 +6,13 @@
 </head>
 <body>
     <h1>{{ num }} 단</h1>
-    {% for result in results %}
-        <p>{{ num }} x {{ forloop.counter }} = {{ result }}
+    {% for i in result %}
+        <p>{{ num }} * {{ forloop.counter }} = {{ i }} </p>
     {% endfor %}
 </body>
 </html>
 
+{# html 에서 range() 함수 사용 못함 #}
 {# django templates에서는 * 를 바로 사용할 수 없다.#}
 {# 그래서 widthratio 함수를 사용하는데 원래 가로 세로 비율을 곱하는 함수 임 #}
 {# widthratio a b * c => a / b * c 이다. #}
