@@ -20,6 +20,7 @@ from Dj_DAY02 import views ##bookmark
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
     path('bookmark/',views.bookmark_list),
-    path('bookmark/<int:num>',views.bookmark_detail),
+    path('bookmark/<int:pk>',views.bookmark_detail),
 ]

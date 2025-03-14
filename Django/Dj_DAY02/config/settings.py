@@ -43,7 +43,9 @@ OWN_APPS = [
     'Dj_DAY02',
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'django_extensions',
+]
 
 INSTALLED_APPS = DJANGO_APPS + OWN_APPS + THIRD_PARTY_APPS
 
@@ -111,7 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-KR'
+
 
 TIME_ZONE = 'UTC'
 
