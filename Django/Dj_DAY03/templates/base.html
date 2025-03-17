@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>블로그 프로젝트</title>
+</head>
+<body>
+    <nav style="display:flex; justify-content: space-between">
+        <div>
+            <a href="{% url 'blog_list' %}">홈</a>
+        </div>
+
+        <div style="text-align: right">
+            {% if request.user.is_authenticated %}  {# 로그인 정보가 있으면 #}
+                {{ request.user.username }}
+
+                <form action="{% url 'logout' %}" method="POST" style="display: inline">
+                {% csrf_token %}
+                <button>로그아웃</button>
+            {% else %}
+                <a href="{% url 'login' %}">로그인</a>
+                <a href="{% url 'sign_up' %}">회원가입</a>
+            {% endif %}
+            </form>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

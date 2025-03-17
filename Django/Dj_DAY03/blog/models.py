@@ -1,5 +1,12 @@
 from django.db import models
 
+# 커스텀user와 충돌이 발생할 수 있으므로 import user보다는
+# AbstractUser + get_user_model()을 사용하는게 용이
+#from django.contrib.auth.models import User
+
+from django.contrib.auth import get_user_model
+User = get_user_model() # 장고에서 현재 설정된 User 모델(기본User, 커스텀User)을 자동으로 가져오도록 변경!
+
 class Blog(models.Model):
     CATEGORY_CHOICES = (
         # ('db에 들어갈 카테고리명', '블로그상에서 보여질 카테고리명')
@@ -15,7 +22,11 @@ class Blog(models.Model):
     category = models.CharField('카테고리', max_length=20, choices=CATEGORY_CHOICES)
     # category가 CharField로 만들어졌지만 choices 옵션으로 인해서 콤보 박스 형태로 노출 됨!
 
-    # author = models.CharField('작성자', max_length=20)
+    author = models.ForeignKey(User, on_delete=models.CASCADE) # 참조무결성
+    # models.CASCADE : 같이 삭제 됨
+    # models.PROTECT : 삭제 불가능 (user를 삭제하려고 할 때 블로그가 있으면 user 삭제 불가능)
+    # models.SET_NULL : NULL 값으로 대체 (유저 삭제 시 블로그의 author가 null이 됨) / 이때 매개변수로 null=True 도 추가해 줘야 함
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
