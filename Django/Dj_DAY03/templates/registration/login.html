@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>로그인 페이지 입니다.</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }} {# login의 경우 django에서 자동으로 form을 제공해줌 / signup은 안 해줌 우리가 views.py에서 작성해야 함 #}
+        <button>submit</button>
+    </form>
+</body>
+</html>
+
+{# csrf_token : 보안용 토큰 #}

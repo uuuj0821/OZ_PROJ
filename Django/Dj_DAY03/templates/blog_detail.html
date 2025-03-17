@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>'{{ blog.title }}' 페이지 입니다. </h1>
+    <p> 카테고리 : {{ blog.category }} </p>
+    <p> 생성일 : {{ blog.created_at }} </p>
+    <hr>
+    <p>{{ blog.content }}</p>
+    <br>
+    <br>
+    <p> <small> 마지막 수정일 : {{ blog.updated_at }} </small> </p>
+    <hr>
+    <a href="{% url 'blog_list' %}">목록으로 돌아가기</a>
+
+</body>
+</html>
