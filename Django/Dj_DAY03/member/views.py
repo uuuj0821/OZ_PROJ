@@ -79,6 +79,12 @@ def login(request):
     if form.is_valid():
         django_login(request, form.get_user())
         # return redirect(settings.LOGIN_REDIRECT_URL) # config/settings.py에 선언된 변수의 url을 반환
+
+        next = request.GET.get('next')
+
+        if next:
+            return redirect(next)
+
         return redirect(reverse('blog_list')) # name을 입력해서 url을 반환 해줌
 
     context = {'form': form}
