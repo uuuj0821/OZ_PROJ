@@ -85,7 +85,7 @@ def login(request):
         if next:
             return redirect(next)
 
-        return redirect(reverse('blog_list')) # name을 입력해서 url을 반환 해줌
+        return redirect(reverse('blog:list')) # name을 입력해서 url을 반환 해줌
 
     context = {'form': form}
 

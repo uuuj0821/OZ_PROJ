@@ -52,8 +52,8 @@ def blog_list(request):
     # 페이지네이션_end
 
     context = {
-        # 'blogs': blogs,
-        'page_object': page_object,
+        'object_list': page_object.object_list,
+        'page_obj': page_object,
     }
 
     return render(request, 'blog_list.html', context)
@@ -62,7 +62,8 @@ def blog_detail(request, pk):
     blog = get_object_or_404(Blog, pk=pk)
 
     context = {
-        'blog' : blog
+        'blog' : blog,
+        'test' : 'TEST'
     }
 
     return render(request, 'blog_detail.html', context)
@@ -89,7 +90,7 @@ def blog_create(request):
         ** reverse()는 url을 동적으로 생성하는 함수임, 이때 url 패턴에 동적으로 전달해야할 인자가 있으면
            kwargs를 사용해주어야 한다.
         '''
-        return redirect(reverse('blog_detail', kwargs={'pk':blog.pk}))
+        return redirect(reverse('fb:detail', kwargs={'pk':blog.pk}))
 
     context = {'form': form}
 
@@ -103,7 +104,7 @@ def blog_update(request, pk):
 
     if form.is_valid():
         blog = form.save()
-        return redirect(reverse('blog_detail', kwargs={'pk': blog.pk}))
+        return redirect(reverse('fb:detail', kwargs={'pk': blog.pk}))
 
     context = {
         'blog':blog,
@@ -123,6 +124,6 @@ def blog_delete(request, pk):
     blog = get_object_or_404(Blog, pk=pk, author=request.user)
     blog.delete()
 
-    return redirect(reverse('blog_list'))
+    return redirect(reverse('fb:list'))
 
 

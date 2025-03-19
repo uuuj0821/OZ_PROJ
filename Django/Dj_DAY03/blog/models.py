@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # 커스텀user와 충돌이 발생할 수 있으므로 import user보다는
 # AbstractUser + get_user_model()을 사용하는게 용이
@@ -19,7 +20,7 @@ class Blog(models.Model):
 
     title = models.CharField('제목', max_length=100)
     content = models.TextField('본문')
-    category = models.CharField('카테고리', max_length=20, choices=CATEGORY_CHOICES)
+    category = models.CharField('카테고리', max_length=20, choices=CATEGORY_CHOICES, default='django')
     # category가 CharField로 만들어졌지만 choices 옵션으로 인해서 콤보 박스 형태로 노출 됨!
 
     author = models.ForeignKey(User, on_delete=models.CASCADE) # 참조무결성
@@ -32,6 +33,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return f'[{self.get_category_display()}] {self.title[:20]}'
+
+    def get_absolute_url(self):
+        return reverse('blog:detail', kwargs={'pk':self.pk})
 
     class Meta:
         verbose_name = '블로그'

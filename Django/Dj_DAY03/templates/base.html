@@ -7,7 +7,7 @@
 <body>
     <nav style="display:flex; justify-content: space-between">
         <div>
-            <a href="{% url 'blog_list' %}">홈</a>
+            <a href="{% url 'blog:list' %}">홈</a>
         </div>
 
         <div style="text-align: right">
@@ -25,7 +25,7 @@
         </div>
     </nav>
 
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
+    {% block js %}{% endblock %}
 </body>
 </html>
