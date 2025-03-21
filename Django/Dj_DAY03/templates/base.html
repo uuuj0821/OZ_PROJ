@@ -1,31 +1,41 @@
+{% load static %} {# from ~ import ~ 와 유사 #}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>블로그 프로젝트</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 </head>
 <body>
-    <nav style="display:flex; justify-content: space-between">
-        <div>
-            <a href="{% url 'blog:list' %}">홈</a>
-        </div>
+{#    <nav style="display:flex; justify-content: space-between">#}
+<nav class="d-flex justify-content-between py-2 px-4 bg-black text-white"> {# day06 추가 #}
+    <div>
+        <a class="text-decoration-none text-white" href="{% url 'blog:list' %}">홈</a>
+    </div>
 
-        <div style="text-align: right">
-            {% if request.user.is_authenticated %}  {# 로그인 정보가 있으면 #}
-                {{ request.user.username }}
+    <div style="text-align: right">
+        {% if request.user.is_authenticated %}  {# 로그인 정보가 있으면 #}
+            {{ request.user.username }}
 
-                <form action="{% url 'logout' %}" method="POST" style="display: inline">
-                {% csrf_token %}
-                <button>로그아웃</button>
-            {% else %}
-                <a href="{% url 'login' %}">로그인</a>
-                <a href="{% url 'sign_up' %}">회원가입</a>
-            {% endif %}
-            </form>
-        </div>
-    </nav>
+            <form action="{% url 'logout' %}" method="POST" class="d-inline">
+            {% csrf_token %}
+            <button class="btn btn-danger btn-sm">로그아웃</button>
+        {% else %}
+            <a href="{% url 'login' %}">로그인</a>
+            <a href="{% url 'sign_up' %}">회원가입</a>
+        {% endif %}
+        </form>
+    </div>
+</nav>
 
+<div class="container">
     {% block content %}{% endblock %}
-    {% block js %}{% endblock %}
+</div>
+
+<footer>
+
+</footer>
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+{% block js %}{% endblock %}
 </body>
 </html>

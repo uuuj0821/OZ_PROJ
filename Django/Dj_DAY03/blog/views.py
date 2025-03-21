@@ -94,7 +94,7 @@ def blog_create(request):
 
     context = {'form': form}
 
-    return render(request, 'blog_create.html', context)
+    return render(request, 'blog_form.html', context)
 
 # 블로그 글 수정하기
 @login_required()
@@ -111,7 +111,7 @@ def blog_update(request, pk):
         'form': form
     }
 
-    return render(request, 'blog_update.html', context)
+    return render(request, 'blog_form.html', context)
 
 # 블로그 글 삭제하기
 @login_required()
