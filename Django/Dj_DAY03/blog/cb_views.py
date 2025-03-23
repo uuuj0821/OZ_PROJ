@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from blog.forms import CommentForm
+from blog.forms import CommentForm, BlogPostForm
 from blog.models import Blog, Comment
 
 
@@ -48,7 +48,7 @@ class BlogDetailView(ListView):
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
-        self.object = get_object_or_404(Blog, pk=kwargs.get('blog_pk'))
+        self.object = get_object_or_404(Blog, pk=kwargs.get('pk'))
         return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -96,7 +96,8 @@ class BlogDetailView(ListView):
 class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
     template_name = 'blog_form.html'
-    fields = ('category', 'title', 'content') # forms.py 대신으로 이렇게 사용함
+    # fields = ('category', 'title', 'content') # forms.py 대신으로 이렇게 사용함
+    form_class = BlogPostForm
 
     # success_url = reverse_lazy('blog_list') # 정적페이지로 갈 때는 함수보다 이렇게 사용하는게 용이함
     # success_url = reverse_lazy('cb_blog_detail', kwargs={'pk':object.pk}) # 매개변수가 필요한 경우 이렇게 사용할 수 없다. 오류 뜸 / 함수로 작성해줘야 함(get_success_url 참조)
@@ -122,8 +123,8 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
 class BlogUpdateView(LoginRequiredMixin, UpdateView):
     model = Blog
     template_name = 'blog_form.html'
-    fields = ('category', 'title', 'content')
-
+    # fields = ('category', 'title', 'content')
+    form_class = BlogPostForm
 
     # 동일 사용자 걸러내기
     # views.py의 blog_update()의 blog = get_object_or_404(Blog, pk=pk, author=request.user) 해당 라인과 동일 동작
@@ -133,6 +134,10 @@ class BlogUpdateView(LoginRequiredMixin, UpdateView):
         if self.request.user.is_superuser:  # if 혹은 if not 사용으로 분리해주면 됨
             return queryset # superuser면 전체 쿼리 반환
         return queryset.filter(author=self.request.user) # superuser 아니면 해당 user 정보의 쿼리만 출력
+
+    def form_valid(self, form):
+        print(form.cleaned_data) # cleaned_data : 출력값을 정리해서 보여줌
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -190,9 +195,9 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         self.object.author = self.request.user
         self.object.blog = blog
         self.object.save()
-        return HttpResponseRedirect(reverse_lazy('blog:detail', kwargs={'blog_pk':blog.pk}))
+        return HttpResponseRedirect(reverse_lazy('blog:detail', kwargs={'pk':blog.pk}))
 
     def get_blog(self):
-        pk = self.kwargs['blog_pk']
+        pk = self.kwargs['pk']
         blog = get_object_or_404(Blog, pk=pk)
         return blog

@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.shortcuts import redirect, reverse, render
 from django.urls import path, include
@@ -21,6 +22,7 @@ from django.views.generic import TemplateView, RedirectView
 from django.views import View
 
 from blog import views, cb_views
+from django.conf import settings
 from member import views as member_views
 
 ## cbv test code
@@ -65,6 +67,9 @@ urlpatterns = [
     path('logout/', member_views.logout, name='logout'),
     path('signup/', member_views.sign_up, name="sign_up"),
 
+    # summernote
+    path('summernote/', include('django_summernote.urls')),
+
 
     # # CBV (Class Based View)
     # # 아래 2라인은 같은 동작을 함
@@ -78,6 +83,10 @@ urlpatterns = [
     #
     # path('test/', TestView.as_view(), name='test'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 # path 옵션에 name을 작성해 놓으면, route가 변하더라도 .html 에서는 name 값을 불러오면 되기 때문에 유지보수면에서 아주 용이하다.
 # route가 변경되어도 이외에 수정해야할 부분이 없음

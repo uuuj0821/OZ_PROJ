@@ -99,10 +99,16 @@ def blog_create(request):
 # 블로그 글 수정하기
 @login_required()
 def blog_update(request, pk):
-    blog = get_object_or_404(Blog, pk=pk, author=request.user)
-    form = BlogPostForm(request.POST or None, instance=blog)
+    if request.user.is_authenticated:
+        blog = get_object_or_404(Blog, pk=pk)
+    else:
+        blog = get_object_or_404(Blog, pk=pk, author=request.user)
+
+    form = BlogPostForm(request.POST or None, request.FILES or None, instance=blog)
+    print(request.POST, request.FILES)
 
     if form.is_valid():
+        print(form.cleaned_data)
         blog = form.save()
         return redirect(reverse('fb:detail', kwargs={'pk': blog.pk}))
 

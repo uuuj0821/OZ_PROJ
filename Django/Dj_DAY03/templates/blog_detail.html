@@ -22,7 +22,12 @@
         <p> 작성자 : {{ blog.author.username }}, 생성일 : {{ blog.created_at }} </p>
     </div>
     <hr>
-    <p>{{ blog.content }}</p>
+
+    {% if blog.image %}
+        <img src="{{ blog.image.url }}" alt="" class="w-100">
+    {% endif %}
+
+    <p>{{ blog.content | safe}}</p>
     <br>
     <br>
     <p><small> 마지막 수정일 : {{ blog.updated_at }} </small></p>

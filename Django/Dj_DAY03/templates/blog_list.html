@@ -14,12 +14,24 @@
     {# 블로그 글 목록 #}
     {% for blog in object_list %}
         <div class="my-1">
-            <a href="{% url 'blog:detail' blog.pk %}"
-               class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                ({{ blog.id }})
-                [{{ blog.get_category_display }}] {{ blog.title }}</a>
-            <a> - <span>({{ blog.author.username }})</span> <small> 생성일
-                : {{ blog.created_at | date:"Y-m-d" }}</small></a>
+            <a href="{% url 'blog:detail' blog.pk %}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover row"></a>
+                {# 방법1 + models.py get_thumbnail_image_url 함수 생성 #}
+                {% if blog.get_thumbnail_image_url %}
+                    <img src="{{ blog.get_thumbnail_image_url }}" alt="" class="col-2">
+                {% endif %}
+
+
+                {# 방법2 #}
+{#                {% if blog.thumbnail %}#}
+{#                    <img src="{{ blog.thumbnail.url }}" alt="" class="col-2">#}
+{#                {% elif blog.image %}#}
+{#                    <img src="{{ blog.image.url }}" alt="" class="col-2">#}
+{#                {% endif %}#}
+            <span class="col-10">({{ blog.id }})
+                [{{ blog.get_category_display }}] {{ blog.title }}</span>
+                </a>
+{#            <a> - <span>({{ blog.author.username }})</span> <small> 생성일#}
+{#                : {{ blog.created_at | date:"Y-m-d" }}</small></a>#}
         </div>
     {% endfor %}
     {# 블로그 글 목록_end #}
