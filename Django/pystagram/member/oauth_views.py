@@ -1,0 +1,1 @@
+NAVER_CALLBACK_URL = '/naver/callback/'

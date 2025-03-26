@@ -43,6 +43,7 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 ]
 
 OWN_APPS = [
@@ -165,3 +166,7 @@ EMAIL_HOST_PASSWORD = SECRET["email"]["password"]
 LOGIN_URL = '/login/'
 # logout
 LOGOUT_REDIRECT_URL = '/'
+
+# OAuth
+NAVER_CLIENT_ID = SECRET["naver"]["client_id"]
+NAVER_SECRET = SECRET["naver"]["secret"]
