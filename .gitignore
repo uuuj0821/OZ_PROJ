@@ -524,5 +524,6 @@ $RECYCLE.BIN/
 
 # auth
 **/.config_secret/*
+**/settings.py
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,pycharm+all,macos,windows,python,venv,flask,jetbrains

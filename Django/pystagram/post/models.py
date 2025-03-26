@@ -39,7 +39,6 @@ class Tag(TimestampModel):
     def __str__(self):
         return self.tag
 
-
 # 댓글
 class Comment(TimestampModel):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
