@@ -6,5 +6,10 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        obj = view.get_object(request, *view.args, **view.kwargs)
+        try:
+            # APIView 사용시
+            obj = view.get_object(request, *view.args, **view.kwargs)
+        except TypeError:
+            # DRF Generic 사용시
+            obj = view.get_object()
         return obj.author == request.user
