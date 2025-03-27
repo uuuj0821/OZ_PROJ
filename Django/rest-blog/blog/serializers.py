@@ -15,4 +15,4 @@ class BlogSerializer(serializers.ModelSerializer):
     author = UserSerializer(many=False, read_only=True) # fk
     class Meta:
         model = Blog
-        fields = ['title', 'content', 'author', 'published_at', 'created_at', 'updated_at']
+        fields = ['id', 'title', 'content', 'author', 'published_at', 'created_at', 'updated_at']

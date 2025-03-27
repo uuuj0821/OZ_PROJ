@@ -116,5 +116,4 @@ def detail_view(request, pk):
         pass
     elif request.method == 'DELETE':
         pass
-'''
-
+'''  
