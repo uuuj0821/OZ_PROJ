@@ -47,3 +47,13 @@ class Blog(TimestampModel):
         verbose_name = '블로그'
         verbose_name_plural = '블로그 목록'
         ordering = ['-created_at', '-id']
+
+class Comment(TimestampModel):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField('본문')
+
+    class Meta:
+        verbose_name = '댓글'
+        verbose_name_plural = '댓글 목록'
+        ordering = ['-created_at', 'blog', '-id']
