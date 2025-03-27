@@ -5,7 +5,7 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView,
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from blog.models import Blog, Comment
-from blog.serializers import BlogSerializer, CommentSerializer
+from blog.serializers import BlogSerializer, CommentSerializer, CommentUpdateSerializer
 from utils.permissions import IsAuthorOrReadOnly
 
 
@@ -24,7 +24,7 @@ class BlogListAPIView(BlogQuerySetMixin, ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
-class BlogRetrieveAPIView(BlogQuerySetMixin, RetrieveUpdateDestroyAPIView):
+class BlogRetrieveUpdateDestroyAPIView(BlogQuerySetMixin, RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthorOrReadOnly, ]
 
 class CommentListCreateAPIView(ListCreateAPIView):
@@ -43,3 +43,8 @@ class CommentListCreateAPIView(ListCreateAPIView):
 
     def get_blog_object(self):
         return get_object_or_404(Blog, pk=self.kwargs.get('blog_pk'))
+
+class CommentUpdateDestroyAPIView(UpdateAPIView, DestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentUpdateSerializer
+    permission_classes = [IsAuthorOrReadOnly]

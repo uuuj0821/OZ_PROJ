@@ -34,3 +34,11 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'author', 'content']
+
+class CommentUpdateSerializer(CommentSerializer):
+    blog = BlogSerializer(many=False, read_only=True)
+
+    # 상속받아도 meta는 안 가져오기 때문에 작성해줘야 함
+    class Meta:
+        model = Comment
+        fields = ['id', 'author', 'content', 'blog']
