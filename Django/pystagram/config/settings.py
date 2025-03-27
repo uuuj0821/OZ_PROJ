@@ -167,6 +167,10 @@ LOGIN_URL = '/login/'
 # logout
 LOGOUT_REDIRECT_URL = '/'
 
-# OAuth
+# OAuth_naver
 NAVER_CLIENT_ID = SECRET["naver"]["client_id"]
 NAVER_SECRET = SECRET["naver"]["secret"]
+
+# OAuth_github
+GITHUB_CLIENT_ID = SECRET["github"]["client_id"]
+GITHUB_SECRET = SECRET["github"]["secret"]
